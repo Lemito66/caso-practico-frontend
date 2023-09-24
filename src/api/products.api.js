@@ -11,3 +11,11 @@ export const getAllProducts = () => {
     config
   );
 };
+
+export const createProduct = (data) => {
+  return axios.post(
+    "https://tribu-ti-staffing-desarrollo-afangwbmcrhucqfh.z01.azurefd.net/ipf-msa-productosfinancieros/bp/products",
+    data,
+    config
+  );
+};
