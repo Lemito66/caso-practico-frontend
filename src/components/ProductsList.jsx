@@ -29,6 +29,7 @@ export function ProductsList() {
             ({ id, name, description, logo, date_release, date_revision }) => (
               <TableRow
                 key={id}
+                id={id}
                 name={name}
                 description={description}
                 logo={logo}
