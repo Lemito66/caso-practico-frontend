@@ -4,8 +4,9 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 
 import { useForm } from "react-hook-form";
-import { createProduct } from "../api/products.api";
-import { useNavigate } from "react-router-dom";
+import { createProduct, updateProduct } from "../api/products.api";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 function ProductsFormPage() {
   const {
@@ -15,12 +16,26 @@ function ProductsFormPage() {
   } = useForm();
 
   const navigate = useNavigate();
+  const params = useParams();
 
-  const onSubmit = handleSubmit(async data => {
-    //console.log(data);
-    await createProduct(data);
-    navigate("/products");
+  const onSubmit = handleSubmit(async (data) => {
+    if (params.id) {
+      //console.log("Actualizando");
+      await updateProduct(data);
+      navigate("/products");
+    } else {
+      //console.log(data);
+      await createProduct(data);
+      navigate("/products");
+    }
   });
+
+  useEffect(() => {
+    if (params.id){
+      console.log('Obteniendo datos')
+    }
+  }, []);
+
   return (
     <>
       <div>ProductsFormPage</div>
