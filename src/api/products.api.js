@@ -19,3 +19,11 @@ export const createProduct = (data) => {
     config
   );
 };
+
+export const deleteProduct = (id) => {
+  
+  return axios.delete(
+    `https://tribu-ti-staffing-desarrollo-afangwbmcrhucqfh.z01.azurefd.net/ipf-msa-productosfinancieros/bp/products?id=${id}`,
+    config
+  );
+}
